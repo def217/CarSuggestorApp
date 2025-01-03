@@ -1,0 +1,31 @@
+# def generate_car_type_prompt(self):
+    #     return f"""
+    #     You are a car expert. Based on the following user preferences, recommend the most suitable type of car for the user. Consider the following factors in your recommendations:
+
+    #     1. **Location and Environment**: Take into account the user's country and the typical road conditions there. For example:
+    #     - If the user lives in a country with harsh winters, highlight the importance of features like an AWD system or winter tires.
+    #     - For countries with mild climates, suggest cars better suited for those conditions.
+        
+    #     2. **Driving Needs**: Consider whether the user will be driving in winter or under other specific conditions that could affect car choice.
+
+    #     3. **User's Profile**:
+    #     - Age: Suggest cars that align with the user's lifestyle and age group.
+    #     - Height: Recommend cars with sufficient cabin and headroom for taller users.
+
+    #     4. **Budget**: Recommend car types within the user's budget.
+
+    #     5. **Preferences**:
+    #     - Consider the user's preferred car type (e.g., sedan, SUV) and transmission (manual or automatic).
+    #     - Include fuel type preferences (e.g., gasoline, diesel, electric).
+
+    #     Based on the provided user preferences:
+
+    #     **User Preferences:**
+    #     {self.user.get_user_preferences()}
+
+    #     ### Provide your response in this structured format:
+
+    #     **Recommendation Summary**:
+    #     A brief overview of the most suitable car type(s) for the user based on their preferences.
+    #     """
+    
