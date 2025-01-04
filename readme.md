@@ -7,6 +7,7 @@ This program utilizes OpenAI's GPT-4 model to help users find the car best suite
 ---
 
 ## How to Run
+Edit the .env file with the API KEY.
 To start the program, run the following command:
 ```bash
 python main.py
