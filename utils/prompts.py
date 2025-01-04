@@ -1,20 +1,23 @@
-
-def generate_car_prompt(user):
+def generate_car_prompt(user, cars):
+    
+    car_list = build_car_list(cars)
+        
     return f"""
-    Based on the user preferences, recommend 3 cars with their pros and cons, also take note on the user's country and format
-    the price and car names accordingly:
+    Here is the current car list {car_list}, based on the user preferences given below, recommend 3 more cars with their pros and cons, do not generate
+    duplicates, take note on the user's country and format the price and car names accordingly:
     
     **User Preferences:**
     {user.get_user_preferences()}
     
     Provide your response in this structured format, as a valid JSON object without any additional text or commentary:
     [
-        {{"make": "Make 1", "model": "Model 1", "year_from": "XXXX", "year_until": "XXXX", "price": "XX,XXX", "pros": ["..."], "cons": ["..."]}},
-        {{"make": "Make 2", "model": "Model 2", "year_from": "XXXX", "year_until": "XXXX", "price": "XX,XXX", "pros": ["..."], "cons": ["..."]}},
-        {{"make": "Make 3", "model": "Model 3", "year_from": "XXXX", "year_until": "XXXX", "price": "XX,XXX", "pros": ["..."], "cons": ["..."]}},
+        {{"make": "Make 1", "model": "Model 1", "year_from": "XXXX", "year_until": "XXXX", "price_from": "XX,XXX", "price_to": "XX,XXX", "pros": ["..."], "cons": ["..."]}},
+        {{"make": "Make 2", "model": "Model 2", "year_from": "XXXX", "year_until": "XXXX", "price_from": "XX,XXX", "price_to": "XX,XXX","pros": ["..."], "cons": ["..."]}},
+        {{"make": "Make 3", "model": "Model 3", "year_from": "XXXX", "year_until": "XXXX", "price_from": "XX,XXX", "price_to": "XX,XXX","pros": ["..."], "cons": ["..."]}},
     ]
     """
-        
+
+
 def generate_more_info_on_car_prompt(car):
     return f"""
     Based on the user preferences, provide a detailed analysis of a {car}. Focus on aspects that are most valuable to the owner, including:
@@ -46,13 +49,11 @@ def generate_more_info_on_car_prompt(car):
         "tips": ["<Tip 1>", "<Tip 2>", "..."]
     }}
     """
-    
+
+
 def compare_cars_based_on_user_prefs(user, cars):
-    car_list = []
-    
-    for car in cars:
-        car_list.append((car.id, car.year_from, car.year_until, car.make, car.model))
-    
+    car_list = build_car_list(cars)
+
     return f"""
     Based on the user's preferences, compare the following car options and choose the best option: {car_list}. 
 
@@ -83,3 +84,12 @@ def compare_cars_based_on_user_prefs(user, cars):
         }}
     ]
     """
+    
+def build_car_list(cars):
+    car_list = []
+
+    if len(cars) > 1:
+        for car in cars:
+            car_list.append((car.id, car.year_from, car.year_until, car.make, car.model))
+    
+    return car_list

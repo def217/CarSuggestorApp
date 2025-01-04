@@ -6,32 +6,30 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class OpenAIClient:
     def __init__(self):
-        self.client = OpenAI(
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     def generate_response(self, prompt):
-        print("\nGenerating response...\n")
-        
+        print("\nGenerating response, please wait...\n")
+
         try:
             response = self.client.chat.completions.create(
                 model="gpt-4",
                 messages=[
                     {"role": "system", "content": "Provide output in valid JSON."},
-                    {"role": "user", "content": prompt}
-                    ],
+                    {"role": "user", "content": prompt},
+                ],
                 temperature=0.5,
                 max_tokens=500,
             )
-            
-            if response.choices[0].finish_reason == "stop":    
-                print(response)
+
+            if response.choices[0].finish_reason == "stop":
                 response_data = json.loads(response.choices[0].message.content)
             else:
                 print("More tokens needed.")
-            
+
             return response_data
 
         except openai.APIError as e:

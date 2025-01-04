@@ -1,0 +1,11 @@
+TODO:
+    Before generating cars, find out witch type of cars would be most suitable for the user (SUV, hatch, sedan, etc.).
+    Data validation.
+    Figure out how to improve AI prompts.
+    Continue on with more prompts to AI:
+        Comparing engines
+        Drivetrains
+        Interiors
+        Exteriors
+    Store response data to DB, so it could be accessed later on. If someone else enters similar user preferences,
+    pull data from DB and not prompt the AI (saves tokens).
