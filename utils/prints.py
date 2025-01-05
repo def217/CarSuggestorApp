@@ -10,7 +10,7 @@ def get_compared_car(compared_car):
     
 def main_car_info(car):
     return (
-        f"{car.year_from}-{car.year_until} {car.make} {car.model} ({car.user_currency}{car.price_from} - {car.price_to})\n"
+        f"{car.year_from}-{car.year_until} {car.make} {car.model} ({car.price_from} - {car.price_to})\n"
         f"Pros: {', '.join(car.pros)}\n"
         f"Cons: {', '.join(car.cons)}\n"
         f"Model updates: {car.model_updates}\n"
